@@ -4,6 +4,7 @@ import dev.frankheijden.insights.api.concurrent.ScanOptions;
 import dev.frankheijden.insights.api.config.parser.YamlParseException;
 import dev.frankheijden.insights.api.config.parser.YamlParser;
 import dev.frankheijden.insights.api.objects.wrappers.ScanObject;
+import dev.frankheijden.insights.api.utils.DisplayNameUtils;
 import dev.frankheijden.insights.api.utils.EnumUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -52,12 +53,12 @@ public class PermissionLimit extends Limit {
 
     @Override
     public LimitInfo getLimit(Material m) {
-        return new LimitInfo(EnumUtils.pretty(m), materials.getOrDefault(m, -1));
+        return new LimitInfo(DisplayNameUtils.of(m), EnumUtils.pretty(m), materials.getOrDefault(m, -1));
     }
 
     @Override
     public LimitInfo getLimit(EntityType e) {
-        return new LimitInfo(EnumUtils.pretty(e), entities.getOrDefault(e, -1));
+        return new LimitInfo(DisplayNameUtils.of(e), EnumUtils.pretty(e), entities.getOrDefault(e, -1));
     }
 
     @Override

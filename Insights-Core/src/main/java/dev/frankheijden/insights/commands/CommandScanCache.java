@@ -10,8 +10,7 @@ import dev.frankheijden.insights.api.objects.wrappers.ScanObject;
 import dev.frankheijden.insights.api.reflection.RTileEntityTypes;
 import dev.frankheijden.insights.api.utils.ChunkUtils;
 import dev.frankheijden.insights.api.utils.Constants;
-import dev.frankheijden.insights.api.utils.EnumUtils;
-import net.kyori.adventure.text.Component;
+import dev.frankheijden.insights.api.utils.DisplayNameUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.incendo.cloud.annotations.Argument;
@@ -127,7 +126,7 @@ public class CommandScanCache extends InsightsCommand {
                     footer,
                     displayItems,
                     storage::count,
-                    item -> Component.text(EnumUtils.pretty(item.getObject()))
+                    DisplayNameUtils::of
             );
 
             plugin.getScanHistory().setHistory(player.getUniqueId(), message);

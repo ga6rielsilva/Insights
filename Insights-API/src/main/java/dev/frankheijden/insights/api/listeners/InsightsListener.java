@@ -124,7 +124,7 @@ public abstract class InsightsListener extends InsightsBase implements Listener 
 
         if (regionOptional.isEmpty() && limit.getSettings().isDisallowedPlacementOutsideRegion()) {
             plugin.getMessages().getMessage(Messages.Key.LIMIT_DISALLOWED_PLACEMENT).addTemplates(TagResolver.resolver(
-                    Messages.tagOf("name", limitInfo.getName()),
+                    Messages.tagOf("name", limitInfo.getDisplayName()),
                     Messages.tagOf("area", area)
             )).sendTo(player);
             return true;
@@ -160,7 +160,7 @@ public abstract class InsightsListener extends InsightsBase implements Listener 
         if (count + delta > limitInfo.getLimit()) {
             plugin.getMessages().getMessage(Messages.Key.LIMIT_REACHED).addTemplates(
                     Messages.tagOf("limit", StringUtils.pretty(limitInfo.getLimit())),
-                    Messages.tagOf("name", limitInfo.getName()),
+                    Messages.tagOf("name", limitInfo.getDisplayName()),
                     Messages.tagOf("area", area)
             ).sendTo(player);
             return true;
@@ -203,7 +203,7 @@ public abstract class InsightsListener extends InsightsBase implements Listener 
                     .add(player)
                     .create()
                     .addTemplates(
-                            Messages.tagOf("name", limitInfo.getName()),
+                            Messages.tagOf("name", limitInfo.getDisplayName()),
                             Messages.tagOf("count", StringUtils.pretty(count + delta)),
                             Messages.tagOf("limit", StringUtils.pretty(limitInfo.getLimit()))
                     )
@@ -315,7 +315,7 @@ public abstract class InsightsListener extends InsightsBase implements Listener 
                         .add(player)
                         .create()
                         .addTemplates(
-                                Messages.tagOf("name", limitInfo.getName()),
+                                Messages.tagOf("name", limitInfo.getDisplayName()),
                                 Messages.tagOf("count", StringUtils.pretty(count)),
                                 Messages.tagOf("limit", StringUtils.pretty(limitInfo.getLimit()))
                         )

@@ -11,12 +11,11 @@ import dev.frankheijden.insights.api.objects.chunk.ChunkLocation;
 import dev.frankheijden.insights.api.objects.chunk.ChunkPart;
 import dev.frankheijden.insights.api.objects.wrappers.ScanObject;
 import dev.frankheijden.insights.api.util.TriConsumer;
-import dev.frankheijden.insights.api.utils.EnumUtils;
+import dev.frankheijden.insights.api.utils.DisplayNameUtils;
 import dev.frankheijden.insights.api.utils.StringUtils;
 import io.papermc.paper.threadedregions.scheduler.AsyncScheduler;
 import io.papermc.paper.threadedregions.scheduler.ScheduledTask;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import java.time.Duration;
 import java.util.Comparator;
@@ -24,7 +23,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
@@ -221,7 +219,7 @@ public class ScanTask<R> implements Runnable {
                             footer,
                             displayItems,
                             storage::count,
-                            item -> Component.text(EnumUtils.pretty(item.getObject()))
+                            DisplayNameUtils::of
                     );
 
                     plugin.getScanHistory().setHistory(player.getUniqueId(), message);
